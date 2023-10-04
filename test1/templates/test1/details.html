@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    
+</head>
+<body style="background-color:lightgoldenrodyellow;">
+    {% include 'test1/navbar.html' %}
+    <div class="container text-center">
+        <h1 style="font-family:initial;">Product Details</h1>
+        <img src="{{ z.img.url }}" style="width: 80%;height: 600px; object-fit: cover;object-position: 25% 75%;">
+        <div style="font-family: initial;">
+        <h2>Name: {{ z.title }}</h2>
+        <h5>Product I'D : {{ z.product_id }}</h5>
+        <h3>Price: ₹{{ z.price }}</h3>
+    </div>
+        <p>{{ z.description }}</p>
+    </div>
+        
+    {% include 'test1/footer.html' %}
+</body>
+</html>

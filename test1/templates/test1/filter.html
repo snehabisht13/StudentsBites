@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body {background: (white);}.slider {position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);width: 500px;height: 60px;padding: 30px;padding-left: 40px;background: #fcfcfc;border-radius: 20px;display: flex;align-items: center;box-shadow: 0px 15px 40px #7E6D5766;}.slider label {font-size: 24px;font-weight: 400;font-family: Open Sans;padding-left: 10px;color: black;}.slider input[type="range"] {width: 420px;height: 2px;background: black;border: none;outline: none;}>
+  {% include 'test1/navbar.html' %}
+  <!--dropdown button-->
+    <div class="container mb-2 my-3 text-center">
+        <form method="post" action="" id="mychoice">
+            {% csrf_token %}
+            <div>
+            <label for="cars" style="font-family: 'Times New Roman', Times, serif;">
+              <h2>Select Category</h2>
+            </label>
+          </div>
+           <div class="container">
+            
+            <select name="myfood" id="food" form="mychoice">
+              
+                <option value="Food">Food</option>
+                <option value="Beverages">Beverages</option>
+               
+                
+            </select>
+            <p>Select Price Range:</p>
+            <input type="range" min="45" max="900" value="50" name="price_range">
+            <form method="post">
+            {{ price_filter_form.as_p }}
+              <button type="submit" style="background-color: gold;">Apply</button>
+          </form>
+            <!-- <button class="btn btn-primary" style="background-color:orangered;">Apply</button>  button -->
+           </div>
+        </form> 
+        
+   
+       
+    </div> 
+    
+        <div class="container text-center">
+  
+            <div class="row">
+            {% for y in x %}
+              <div class="col">
+                <div class="card" style="width: 18rem; margin: 10px;">
+                  <img src="{{y.img.url}}" class="card-img-top" alt="image" style="width: 100%;height: 200px; object-fit: cover;">
+                  <div class="card-body">
+                    <h5 class="card-title" style="font-family: fantasy;">{{y.title}}</h5>
+                    <p class="card-text">{{ y.description|slice:":200" }}...</p>
+                    <a class="btn btn-primary" href="{{ y.id }}" style="background-color:orange">Read More</a>  
+                     </div>
+                </div>
+              </div>
+            
+            {% endfor %}
+
+           
+          
+         
+          
+            {% include 'test1/footer.html' %}
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> -->
+</body>
+</html>
